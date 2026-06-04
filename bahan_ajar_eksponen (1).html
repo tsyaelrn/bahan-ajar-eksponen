@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bahan Ajar Eksponen – Matematika SMK Kelas X</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-50: #E6F1FB; --blue-200: #85B7EB; --blue-600: #185FA5; --blue-800: #0C447C; --blue-900: #042C53;
+    --teal-50: #E1F5EE; --teal-200: #5DCAA5; --teal-600: #0F6E56; --teal-800: #085041;
+    --amber-50: #FAEEDA; --amber-200: #EF9F27; --amber-600: #854F0B; --amber-800: #633806;
+    --purple-50: #EEEDFE; --purple-200: #AFA9EC; --purple-600: #534AB7; --purple-800: #3C3489;
+    --coral-50: #FAECE7; --coral-200: #F0997B; --coral-600: #993C1D; --coral-800: #712B13;
+    --green-50: #EAF3DE; --green-200: #97C459; --green-600: #3B6D11; --green-800: #27500A;
+    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-600: #5F5E5A; --gray-800: #444441;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: #f8f6f0;
+    color: #1a1a1a;
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  .hero {
+    background: var(--blue-900);
+    color: #fff;
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,.03) 0, rgba(255,255,255,.03) 1px, transparent 1px, transparent 24px);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: var(--teal-200);
+    color: var(--teal-800);
+    font-size: 12px; font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 4px 14px; border-radius: 20px;
+    margin-bottom: 1rem; position: relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.15; margin-bottom: .75rem;
+    position: relative;
+  }
+  .hero-sub {
+    font-size: 1rem; opacity: .75;
+    position: relative;
+  }
+  .hero-meta {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;
+    margin-top: 2rem; position: relative;
+  }
+  .hero-meta span {
+    font-size: 13px; opacity: .85;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .hero-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-200); }
+
+  /* ── NAV TABS ── */
+  .nav-wrap {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff; border-bottom: 1px solid #e0ddd5;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  }
+  .nav-tabs {
+    display: flex; overflow-x: auto; gap: 0;
+    max-width: 900px; margin: 0 auto;
+  }
+  .nav-tabs::-webkit-scrollbar { height: 0; }
+  .tab-btn {
+    flex: none;
+    padding: 14px 20px;
+    background: none; border: none; border-bottom: 3px solid transparent;
+    cursor: pointer; font-family: inherit; font-size: 14px; font-weight: 600;
+    color: var(--gray-600); white-space: nowrap; transition: all .2s;
+  }
+  .tab-btn.active { color: var(--blue-800); border-bottom-color: var(--blue-600); }
+  .tab-btn:hover:not(.active) { color: #1a1a1a; background: var(--gray-50); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* ── CARDS ── */
+  .card {
+    background: #fff; border-radius: 16px;
+    border: 1px solid #e0ddd5;
+    padding: 1.5rem 1.75rem; margin-bottom: 1.5rem;
+  }
+  .card-title {
+    font-size: 1rem; font-weight: 700; color: var(--blue-900);
+    margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;
+  }
+  .card-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+
+  /* ── SECTION HEADING ── */
+  .sec-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7rem; color: var(--blue-900);
+    margin-bottom: .4rem;
+  }
+  .sec-sub { font-size: .9rem; color: var(--gray-600); margin-bottom: 2rem; }
+
+  /* ── TUJUAN PEMBELAJARAN ── */
+  .tp-list { list-style: none; }
+  .tp-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 1rem 0; border-bottom: 1px solid var(--gray-50);
+  }
+  .tp-list li:last-child { border-bottom: none; }
+  .tp-num {
+    min-width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blue-600); color: #fff;
+    font-size: 13px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tp-text { font-size: 14px; line-height: 1.6; color: #2a2a2a; }
+
+  /* ── DEFINISI & MATERI ── */
+  .concept-box {
+    background: var(--blue-50); border-left: 4px solid var(--blue-600);
+    border-radius: 0 12px 12px 0; padding: 1.25rem 1.5rem; margin: 1.25rem 0;
+  }
+  .concept-box .formula {
+    font-family: 'Georgia', serif; font-size: 1.5rem; font-weight: 700;
+    color: var(--blue-900); text-align: center; padding: 1rem;
+  }
+  .concept-box p { font-size: 14px; color: var(--blue-800); }
+
+  /* ── SIFAT GRID ── */
+  .sifat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem; margin: 1rem 0;
+  }
+  .sifat-card {
+    border-radius: 12px; padding: 1.25rem;
+    border: 1px solid transparent;
+  }
+  .sifat-card h4 { font-size: 13px; font-weight: 700; margin-bottom: .5rem; text-transform: uppercase; letter-spacing: .05em; }
+  .sifat-card .sf { font-family: 'Georgia', serif; font-size: 1.1rem; font-weight: 700; margin: .4rem 0; }
+  .sifat-card p { font-size: 12px; line-height: 1.5; }
+  .sifat-card.blue  { background: var(--blue-50);   border-color: var(--blue-200);   color: var(--blue-800); }
+  .sifat-card.teal  { background: var(--teal-50);   border-color: var(--teal-200);   color: var(--teal-800); }
+  .sifat-card.amber { background: var(--amber-50);  border-color: var(--amber-200);  color: var(--amber-800); }
+  .sifat-card.purple{ background: var(--purple-50); border-color: var(--purple-200); color: var(--purple-800); }
+  .sifat-card.green { background: var(--green-50);  border-color: var(--green-200);  color: var(--green-800); }
+  .sifat-card.coral { background: var(--coral-50);  border-color: var(--coral-200);  color: var(--coral-800); }
+
+  /* ── KONTEKS NYATA ── */
+  .konteks-item {
+    display: flex; gap: 16px; padding: 1rem 0;
+    border-bottom: 1px solid var(--gray-50);
+  }
+  .konteks-item:last-child { border: none; }
+  .konteks-icon {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+  }
+  .konteks-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .konteks-item p { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+
+  /* ── SIMULATOR INTERAKTIF ── */
+  .sim-wrap { padding: 1.5rem 0; }
+  .sim-label { font-size: 14px; font-weight: 600; color: var(--gray-800); margin-bottom: .5rem; }
+  .sim-controls { display: flex; align-items: center; gap: 14px; margin-bottom: 1.25rem; }
+  .sim-controls input[type=range] { flex: 1; height: 6px; border-radius: 3px; accent-color: var(--blue-600); }
+  .sim-val {
+    min-width: 36px; text-align: right;
+    font-size: 15px; font-weight: 700; color: var(--blue-800);
+  }
+  .sim-result-box {
+    background: var(--blue-50); border: 1px solid var(--blue-200);
+    border-radius: 12px; padding: 1.25rem; text-align: center; margin: 1rem 0;
+  }
+  .sim-result-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; color: var(--blue-900); font-weight: 700;
+  }
+  .sim-result-sub { font-size: 13px; color: var(--blue-600); margin-top: 4px; }
+  .sim-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 13px; }
+  .sim-table th {
+    background: var(--blue-900); color: #fff;
+    padding: 8px 12px; text-align: center; font-weight: 600;
+  }
+  .sim-table th:first-child { border-radius: 8px 0 0 0; }
+  .sim-table th:last-child  { border-radius: 0 8px 0 0; }
+  .sim-table td { padding: 7px 12px; text-align: center; border-bottom: 1px solid var(--gray-100); }
+  .sim-table tr:nth-child(even) td { background: var(--blue-50); }
+  .sim-table tr.highlight td { background: var(--amber-50); color: var(--amber-800); font-weight: 700; }
+
+  /* ── LATIHAN SOAL ── */
+  .soal-item { margin-bottom: 1.75rem; }
+  .soal-q { font-size: 15px; font-weight: 600; color: var(--blue-900); margin-bottom: .75rem; }
+  .soal-options { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .opt-btn {
+    padding: 10px 14px; border-radius: 10px;
+    border: 1.5px solid var(--gray-100); background: #fff;
+    font-family: inherit; font-size: 14px; cursor: pointer; text-align: left;
+    transition: all .18s; color: #1a1a1a;
+  }
+  .opt-btn:hover { border-color: var(--blue-200); background: var(--blue-50); }
+  .opt-btn.correct { background: var(--green-50); border-color: var(--green-200); color: var(--green-800); font-weight: 700; }
+  .opt-btn.wrong   { background: #FCEBEB; border-color: #F7C1C1; color: #A32D2D; }
+  .opt-btn.disabled { pointer-events: none; }
+  .soal-feedback {
+    margin-top: .75rem; padding: .75rem 1rem;
+    border-radius: 10px; font-size: 14px; display: none;
+  }
+  .soal-feedback.show { display: block; }
+  .soal-feedback.ok { background: var(--green-50); color: var(--green-800); border: 1px solid var(--green-200); }
+  .soal-feedback.err { background: #FCEBEB; color: #A32D2D; border: 1px solid #F7C1C1; }
+
+  .score-box {
+    background: var(--teal-50); border: 1px solid var(--teal-200);
+    border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1.5rem;
+  }
+  .score-big { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--teal-600); }
+  .score-label { font-size: 14px; color: var(--teal-800); margin-top: 4px; }
+  .reset-btn {
+    display: inline-block; margin-top: 1rem;
+    padding: 10px 24px; border-radius: 8px;
+    background: var(--blue-600); color: #fff;
+    border: none; font-family: inherit; font-size: 14px; font-weight: 600;
+    cursor: pointer;
+  }
+  .reset-btn:hover { background: var(--blue-800); }
+
+  /* ── ALUR PEMBELAJARAN ── */
+  .alur-wrap { position: relative; padding: 1rem 0; }
+  .alur-line {
+    position: absolute; left: 22px; top: 16px; bottom: 16px;
+    width: 2px; background: var(--blue-200);
+  }
+  .alur-step {
+    display: flex; gap: 18px; align-items: flex-start;
+    padding: .75rem 0; position: relative;
+  }
+  .alur-dot {
+    min-width: 44px; height: 44px; border-radius: 50%; z-index: 1;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; color: #fff;
+    flex-shrink: 0;
+  }
+  .alur-step-body h4 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+  .alur-step-body p { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+  .alur-time {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 2px 10px; border-radius: 20px; margin-bottom: 4px;
+  }
+
+  /* ── REFLEKSI ── */
+  .refleksi-q {
+    padding: .9rem 1rem; background: var(--gray-50);
+    border-radius: 10px; margin-bottom: .75rem;
+    font-size: 14px; color: #2a2a2a;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .refleksi-q .q-num {
+    background: var(--purple-600); color: #fff;
+    font-size: 12px; font-weight: 700; min-width: 24px; height: 24px;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* ── CHIP TAGS ── */
+  .chip {
+    display: inline-block; font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px; margin: 2px 3px 2px 0;
+  }
+  .chip.blue   { background: var(--blue-50);   color: var(--blue-800); }
+  .chip.teal   { background: var(--teal-50);   color: var(--teal-800); }
+  .chip.amber  { background: var(--amber-50);  color: var(--amber-800); }
+  .chip.purple { background: var(--purple-50); color: var(--purple-800); }
+  .chip.coral  { background: var(--coral-50);  color: var(--coral-800); }
+  .chip.green  { background: var(--green-50);  color: var(--green-800); }
+
+  .info-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;
+    margin-top: 1rem;
+  }
+  .info-tile {
+    background: var(--gray-50); border-radius: 12px; padding: 1rem;
+    border: 1px solid var(--gray-100);
+  }
+  .info-tile .label { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--gray-600); font-weight: 700; margin-bottom: 5px; }
+  .info-tile .value { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+
+  @media (max-width: 600px) {
+    .sifat-grid { grid-template-columns: 1fr; }
+    .soal-options { grid-template-columns: 1fr; }
+    .hero { padding: 2rem 1.25rem; }
+    .container { padding: 1.5rem 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">Matematika · SMK Kelas X · Fase E</div>
+  <h1>Eksponen<br>Definisi &amp; Sifat-Sifatnya</h1>
+  <p class="hero-sub">Model Discovery Learning · Semester Ganjil 2025/2026</p>
+  <div class="hero-meta">
+    <span><span class="dot"></span> 1 Pertemuan · 2 JP (90 Menit)</span>
+    <span><span class="dot"></span> Diskusi Kelompok &amp; Eksplorasi</span>
+    <span><span class="dot"></span> Profil Pelajar Pancasila</span>
+  </div>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="showSection('overview')">📋 Gambaran Umum</button>
+    <button class="tab-btn" onclick="showSection('materi')">📐 Materi Inti</button>
+    <button class="tab-btn" onclick="showSection('simulator')">🔢 Simulator</button>
+    <button class="tab-btn" onclick="showSection('kegiatan')">🗂 Alur Kegiatan</button>
+    <button class="tab-btn" onclick="showSection('latihan')">✏️ Latihan Soal</button>
+    <button class="tab-btn" onclick="showSection('refleksi')">🪞 Refleksi</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ OVERVIEW ══════════════════════════════ -->
+<div id="sec-overview" class="section active">
+  <div class="container">
+    <h2 class="sec-heading">Gambaran Umum</h2>
+    <p class="sec-sub">Informasi umum modul ajar dan tujuan pembelajaran</p>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--blue-50)">📄</div>
+        Identitas Modul
+      </div>
+      <div class="info-grid">
+        <div class="info-tile"><div class="label">Mata Pelajaran</div><div class="value">Matematika</div></div>
+        <div class="info-tile"><div class="label">Fase / Kelas</div><div class="value">Fase E / X SMK</div></div>
+        <div class="info-tile"><div class="label">Tahun Pelajaran</div><div class="value">2025 / 2026</div></div>
+        <div class="info-tile"><div class="label">Semester</div><div class="value">Ganjil</div></div>
+        <div class="info-tile"><div class="label">Alokasi Waktu</div><div class="value">2 JP × 45 Menit</div></div>
+        <div class="info-tile"><div class="label">Model Pembelajaran</div><div class="value">Discovery Learning</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--teal-50)">🎯</div>
+        Capaian Pembelajaran
+      </div>
+      <div class="concept-box" style="background:var(--teal-50);border-left-color:var(--teal-600)">
+        <p style="color:var(--teal-800);font-size:14px;line-height:1.7">
+          Di akhir Fase E, peserta didik dapat <strong>menggeneralisasi sifat-sifat bilangan berpangkat (eksponen)</strong> dan menerapkannya, termasuk bilangan pangkat pecahan. Peserta didik dapat menggunakan <strong>konsep eksponen dalam pemodelan dan penyelesaian masalah kontekstual</strong>, termasuk yang berkaitan dengan pertumbuhan dan peluruhan.
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--amber-50)">✅</div>
+        Tujuan Pembelajaran
+      </div>
+      <ul class="tp-list">
+        <li>
+          <div class="tp-num">1</div>
+          <div class="tp-text">Melalui eksplorasi konteks penyebaran hoaks, peserta didik dapat <strong>menjelaskan definisi eksponen</strong> dan mengidentifikasi bilangan pokok serta eksponen dari suatu bentuk perpangkatan dengan benar.</div>
+        </li>
+        <li>
+          <div class="tp-num">2</div>
+          <div class="tp-text">Peserta didik dapat <strong>mengidentifikasi dan menyebutkan sifat-sifat eksponen</strong> (minimal 5 sifat) yang berlaku pada operasi bilangan berpangkat.</div>
+        </li>
+        <li>
+          <div class="tp-num">3</div>
+          <div class="tp-text">Melalui diskusi kelompok berbasis tabel 2ⁿ, peserta didik dapat <strong>menerapkan sifat-sifat eksponen</strong> untuk menyederhanakan bentuk eksponen dengan tepat.</div>
+        </li>
+        <li>
+          <div class="tp-num">4</div>
+          <div class="tp-text">Peserta didik dapat <strong>menganalisis pola pertumbuhan eksponen</strong> dari konteks nyata dan menghubungkannya dengan fungsi eksponensial f(x) = aˣ.</div>
+        </li>
+        <li>
+          <div class="tp-num">5</div>
+          <div class="tp-text">Melalui presentasi kelompok, peserta didik dapat <strong>mengkomunikasikan hasil eksplorasi</strong> dengan percaya diri dan langkah yang sistematis.</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--purple-50)">🌟</div>
+        Profil Pelajar Pancasila
+      </div>
+      <div>
+        <span class="chip blue">Beriman &amp; Berakhlak Mulia</span>
+        <span class="chip teal">Bernalar Kritis</span>
+        <span class="chip amber">Kreatif</span>
+        <span class="chip purple">Bergotong Royong</span>
+        <span class="chip coral">Mandiri</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--green-50)">📊</div>
+        Asesmen
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+        <div style="background:var(--blue-50);border-radius:12px;padding:1rem;border:1px solid var(--blue-200)">
+          <div style="font-size:12px;font-weight:700;color:var(--blue-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Diagnostik</div>
+          <p style="font-size:13px;color:var(--blue-800)">Pertanyaan pemantik lisan — pola bilangan dan konsep perkalian berulang</p>
+        </div>
+        <div style="background:var(--teal-50);border-radius:12px;padding:1rem;border:1px solid var(--teal-200)">
+          <div style="font-size:12px;font-weight:700;color:var(--teal-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Formatif</div>
+          <p style="font-size:13px;color:var(--teal-800)">Observasi diskusi · Hasil LKPD · Presentasi · Exit ticket (3-2-1)</p>
+        </div>
+        <div style="background:var(--amber-50);border-radius:12px;padding:1rem;border:1px solid var(--amber-200)">
+          <div style="font-size:12px;font-weight:700;color:var(--amber-600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Sumatif</div>
+          <p style="font-size:13px;color:var(--amber-800)">5 PG + 3 Uraian · Rubrik presentasi · Penilaian LKPD kelompok</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ MATERI INTI ══════════════════════════════ -->
+<div id="sec-materi" class="section">
+  <div class="container">
+    <h2 class="sec-heading">Materi Inti</h2>
+    <p class="sec-sub">Definisi, notasi, dan sifat-sifat eksponen</p>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--blue-50)">💡</div>
+        Apersepsi: Konteks Penyebaran Hoaks
+      </div>
+      <p style="font-size:14px;color:#333;line-height:1.7;margin-bottom:1rem">
+        Seseorang membagikan pesan hoaks kepada <strong>2 orang</strong> temannya. Setiap orang itu meneruskan lagi ke 2 orang lain, begitu seterusnya. Amati polanya:
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:1rem">
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--blue-50);border-radius:10px;padding:.75rem;border:1px solid var(--blue-200)">
+          <div style="font-size:11px;font-weight:700;color:var(--blue-600);text-transform:uppercase">Fase 1</div>
+          <div style="font-size:1.4rem;font-weight:700;color:var(--blue-900)">2¹ = 2</div>
+        </div>
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--blue-50);border-radius:10px;padding:.75rem;border:1px solid var(--blue-200)">
+          <div style="font-size:11px;font-weight:700;color:var(--blue-600);text-transform:uppercase">Fase 2</div>
+          <div style="font-size:1.4rem;font-weight:700;color:var(--blue-900)">2² = 4</div>
+        </div>
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--blue-50);border-radius:10px;padding:.75rem;border:1px solid var(--blue-200)">
+          <div style="font-size:11px;font-weight:700;color:var(--blue-600);text-transform:uppercase">Fase 3</div>
+          <div style="font-size:1.4rem;font-weight:700;color:var(--blue-900)">2³ = 8</div>
+        </div>
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--blue-50);border-radius:10px;padding:.75rem;border:1px solid var(--blue-200)">
+          <div style="font-size:11px;font-weight:700;color:var(--blue-600);text-transform:uppercase">Fase 4</div>
+          <div style="font-size:1.4rem;font-weight:700;color:var(--blue-900)">2⁴ = 16</div>
+        </div>
+        <div style="flex:1;min-width:80px;text-align:center;background:var(--amber-50);border-radius:10px;padding:.75rem;border:1px solid var(--amber-200)">
+          <div style="font-size:11px;font-weight:700;color:var(--amber-600);text-transform:uppercase">Fase 5</div>
+          <div style="font-size:1.4rem;font-weight:700;color:var(--amber-900)">2⁵ = 32</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--gray-600)">🧠 <em>Pola ini membentuk apa yang disebut <strong>pertumbuhan eksponen</strong>. Pola perkalian berulang inilah yang menjadi dasar konsep eksponen!</em></p>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--blue-50)">📖</div>
+        Definisi Eksponen
+      </div>
+      <div class="concept-box">
+        <div class="formula">aⁿ = a × a × a × ... × a</div>
+        <p style="text-align:center;margin-top:.25rem">(sebanyak n faktor)</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
+        <div style="background:var(--blue-50);border-radius:10px;padding:1rem;border:1px solid var(--blue-200);text-align:center">
+          <div style="font-size:12px;font-weight:700;color:var(--blue-600);text-transform:uppercase;margin-bottom:6px">Bilangan Pokok (Basis)</div>
+          <div style="font-size:1.5rem;font-weight:700;color:var(--blue-900)">a</div>
+          <div style="font-size:13px;color:var(--blue-800);margin-top:4px">Bilangan yang dipangkatkan</div>
+        </div>
+        <div style="background:var(--amber-50);border-radius:10px;padding:1rem;border:1px solid var(--amber-200);text-align:center">
+          <div style="font-size:12px;font-weight:700;color:var(--amber-600);text-transform:uppercase;margin-bottom:6px">Eksponen (Pangkat)</div>
+          <div style="font-size:1.5rem;font-weight:700;color:var(--amber-900)">n</div>
+          <div style="font-size:13px;color:var(--amber-800);margin-top:4px">Banyaknya faktor perkalian</div>
+        </div>
+      </div>
+      <div style="background:var(--gray-50);border-radius:10px;padding:1rem;margin-top:1rem">
+        <p style="font-size:14px;margin-bottom:.5rem"><strong>Contoh:</strong></p>
+        <p style="font-size:14px">• <strong>3⁵</strong> = 3 × 3 × 3 × 3 × 3 = 243 &nbsp;→ basis = 3, eksponen = 5</p>
+        <p style="font-size:14px">• <strong>(-2)⁴</strong> = (-2)×(-2)×(-2)×(-2) = 16 &nbsp;→ basis = -2, eksponen = 4</p>
+        <p style="font-size:14px">• <strong>5⁰</strong> = 1 &nbsp;→ setiap basis bukan nol dipangkatkan 0 = 1</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--purple-50)">⚙️</div>
+        Tujuh Sifat Eksponen
+      </div>
+      <div class="sifat-grid">
+        <div class="sifat-card blue">
+          <h4>① Perkalian</h4>
+          <div class="sf">aᵐ × aⁿ = aᵐ⁺ⁿ</div>
+          <p>Basis sama, pangkat dijumlah.<br><strong>Contoh:</strong> 2³ × 2⁴ = 2⁷ = 128</p>
+        </div>
+        <div class="sifat-card teal">
+          <h4>② Pembagian</h4>
+          <div class="sf">aᵐ ÷ aⁿ = aᵐ⁻ⁿ</div>
+          <p>Basis sama, pangkat dikurangi.<br><strong>Contoh:</strong> 2⁷ ÷ 2³ = 2⁴ = 16</p>
+        </div>
+        <div class="sifat-card amber">
+          <h4>③ Pangkat dari Pangkat</h4>
+          <div class="sf">(aᵐ)ⁿ = aᵐˣⁿ</div>
+          <p>Pangkat dikalikan.<br><strong>Contoh:</strong> (2³)² = 2⁶ = 64</p>
+        </div>
+        <div class="sifat-card purple">
+          <h4>④ Eksponen Nol</h4>
+          <div class="sf">a⁰ = 1</div>
+          <p>Berlaku untuk a ≠ 0.<br><strong>Contoh:</strong> 5⁰ = 1, (-3)⁰ = 1</p>
+        </div>
+        <div class="sifat-card coral">
+          <h4>⑤ Eksponen Negatif</h4>
+          <div class="sf">a⁻ⁿ = 1/aⁿ</div>
+          <p>Kebalikan dari pangkat positif.<br><strong>Contoh:</strong> 2⁻³ = 1/8</p>
+        </div>
+        <div class="sifat-card green">
+          <h4>⑥ Perpangkatan Perkalian</h4>
+          <div class="sf">(ab)ᵐ = aᵐbᵐ</div>
+          <p>Perkalian dipangkatkan.<br><strong>Contoh:</strong> (2×3)² = 4×9 = 36</p>
+        </div>
+        <div class="sifat-card blue" style="grid-column:1/-1">
+          <h4>⑦ Eksponen Pecahan</h4>
+          <div class="sf">a^(m/n) = ⁿ√(aᵐ)</div>
+          <p>Eksponen pecahan menjadi bentuk akar. <strong>Contoh:</strong> 8^(2/3) = ∛(8²) = ∛64 = 4</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--coral-50)">🌍</div>
+        Eksponen dalam Kehidupan Nyata
+      </div>
+      <div class="konteks-item">
+        <div class="konteks-icon" style="background:var(--blue-50)">📱</div>
+        <div>
+          <h4 style="color:var(--blue-800)">Penyebaran Informasi / Hoaks</h4>
+          <p>Jika 1 pesan diteruskan ke 3 orang dan seterusnya: setelah 10 langkah terdapat 3¹⁰ = 59.049 penerima.</p>
+        </div>
+      </div>
+      <div class="konteks-item">
+        <div class="konteks-icon" style="background:var(--teal-50)">🦠</div>
+        <div>
+          <h4 style="color:var(--teal-800)">Pertumbuhan Bakteri</h4>
+          <p>Bakteri membelah diri setiap 20 menit. Jika awalnya 100 bakteri, setelah t jam jumlahnya = 100 × 2^(3t).</p>
+        </div>
+      </div>
+      <div class="konteks-item">
+        <div class="konteks-icon" style="background:var(--amber-50)">💰</div>
+        <div>
+          <h4 style="color:var(--amber-800)">Investasi Keuangan (Bunga Majemuk)</h4>
+          <p>Modal M dengan bunga r% per tahun selama n tahun: A = M × (1 + r/100)ⁿ</p>
+        </div>
+      </div>
+      <div class="konteks-item">
+        <div class="konteks-icon" style="background:var(--purple-50)">💻</div>
+        <div>
+          <h4 style="color:var(--purple-800)">Kapasitas Penyimpanan Komputer</h4>
+          <p>1 KB = 2¹⁰ byte, 1 MB = 2²⁰ byte, 1 GB = 2³⁰ byte — semua berbasis eksponen 2.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ SIMULATOR ══════════════════════════════ -->
+<div id="sec-simulator" class="section">
+  <div class="container">
+    <h2 class="sec-heading">Simulator Eksponen</h2>
+    <p class="sec-sub">Eksplorasi pola pertumbuhan eksponen secara interaktif</p>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--blue-50)">🧮</div>
+        Kalkulator Pertumbuhan Eksponen
+      </div>
+      <div class="sim-wrap">
+        <div class="sim-label">Basis (a) — bilangan pokok:</div>
+        <div class="sim-controls">
+          <input type="range" min="2" max="10" value="2" id="sl-base" oninput="updateSim()">
+          <span class="sim-val" id="out-base">2</span>
+        </div>
+        <div class="sim-label">Eksponen (n) — pangkat:</div>
+        <div class="sim-controls">
+          <input type="range" min="1" max="12" value="5" id="sl-exp" oninput="updateSim()">
+          <span class="sim-val" id="out-exp">5</span>
+        </div>
+        <div class="sim-result-box">
+          <div id="sim-formula" style="font-size:1rem;color:var(--blue-600);margin-bottom:.5rem;font-weight:600"></div>
+          <div class="sim-result-big" id="sim-result">32</div>
+          <div class="sim-result-sub" id="sim-notation"></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray-600);margin-bottom:1rem">Tabel nilai aⁿ untuk n = 1 hingga eksponen yang dipilih:</p>
+        <table class="sim-table">
+          <thead><tr><th>n (Eksponen)</th><th>Nilai aⁿ</th><th>Perkalian Berulang</th></tr></thead>
+          <tbody id="sim-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">
+        <div class="card-icon" style="background:var(--teal-50)">📊</div>
+        Eksplorasi Sifat Eksponen
+      </div>
+      <p style="font-size:14px;color:#333;margin-bottom:1.25rem">Masukkan nilai m dan n untuk memverifikasi sifat-sifat eksponen:</p>
+
+      <div class="sim-label">Basis (a):</div>
+      <div class="sim-controls">
+        <input type="range" min="2" max="6" value="2" id="sl-a" oninput="updateSifat()">
+        <span class="sim-val" id="out-a">2</span>
+      </div>
+      <div class="sim-label">Pangkat m:</div>
+      <div class="sim-controls">
+        <input type="range" min="1" max="8" value="3" id="sl-m" oninput="updateSifat()">
+        <span class="sim-val" id="out-m">3</span>
+      </div>
+      <div class="sim-label">Pangkat n:</div>
+      <div class="sim-controls">
+        <input type="range" min="1" max="8" value="4" id="sl-n" oninput="updateSifat()">
+        <span class="sim-val" id="out-n">4</span>
+      </div>
+
+      <div id="sifat-results" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.75rem;margin-top:1rem"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ KEGIATAN ══════════════════════════════ -->
+<div id="sec-kegiatan" class="section">
+  <div class="container">
+    <h2 class="sec-heading">Alur Kegiatan Pembelajaran</h2>
+    <p class="sec-sub">Sintaks Discovery Learning — 90 Menit</p>
+
+    <div class="card">
+      <div class="alur-wrap">
+        <div class="alur-line"></div>
+
+        <div class="alur-step">
+          <div class="alur-dot" style="background:var(--teal-600)">A</div>
+          <div class="alur-step-body">
+            <div><span class="alur-time" style="background:var(--teal-50);color:var(--teal-800)">± 10 Menit</span></div>
+            <h4>Kegiatan Awal</h4>
+            <p>Salam & doa · Cek kehadiran · Apersepsi: "Jika 1 orang membagikan info ke 2 teman, dan seterusnya — berapa orang yang menerima setelah 5 kali penerusan?" · Menyampaikan tujuan pembelajaran & alur kegiatan · Motivasi manfaat eksponen dalam kehidupan nyata (penyebaran informasi, pertumbuhan bakteri, investasi, komputer)</p>
+          </div>
+        </div>
+
+        <div class="alur-step">
+          <div class="alur-dot" style="background:var(--blue-600)">1</div>
+          <div class="alur-step-body">
+            <div><span class="alur-time" style="background:var(--blue-50);color:var(--blue-800)">± 10 Menit</span></div>
+            <h4>Fase 1 — Stimulasi</h4>
+            <p>Guru menampilkan slide konteks penyebaran hoaks di media sosial · Memancing pola 2, 4, 8, 16, 32 · Membagikan LKPD kepada setiap kelompok · Peserta didik membaca pengantar LKPD (definisi eksponen, bentuk umum aⁿ, contoh 3⁴)</p>
+          </div>
+        </div>
+
+        <div class="alur-step">
+          <div class="alur-dot" style="background:var(--blue-600)">2</div>
+          <div class="alur-step-body">
+            <div><span class="alur-time" style="background:var(--blue-50);color:var(--blue-800)">± 10 Menit</span></div>
+            <h4>Fase 2 — Identifikasi Masalah</h4>
+            <p>Pembagian kelompok heterogen (4–5 orang) · Menentukan peran anggota (ketua, penulis, penyaji, notulen) · Merumuskan hipotesis pola penyebaran · Scaffolding: "Nyatakan 2×2×2 dalam bentuk ringkas!" · Pengenalan notasi bilangan berpangkat: bilangan pokok (a) dan eksponen (n)</p>
+          </div>
+        </div>
+
+        <div class="alur-step">
+          <div class="alur-dot" style="background:var(--purple-600)">3</div>
+          <div class="alur-step-body">
+            <div><span class="alur-time" style="background:var(--purple-50);color:var(--purple-800)">± 20 Menit</span></div>
+            <h4>Fase 3 — Pengumpulan Data</h4>
+            <p><strong>Aktivitas 1 (LKPD)</strong> — Eksplorasi hoaks: melengkapi tabel putaran penyebaran (n=1–7), mengidentifikasi bilangan pokok & eksponen dari 3⁵, 7³, 10², menjelaskan hubungan penyebaran hoaks dengan perpangkatan · <strong>Aktivitas 2 (LKPD)</strong> — Melengkapi tabel sifat eksponen (2²×2³, 3⁴×3², 5⁵÷5², (2³)², (3×5)²) · Guru berkeliling dengan pertanyaan pengarah: "Apa yang terjadi pada pangkat saat dikalikan/dibagi?"</p>
+          </div>
+        </div>
+
+        <div class="alur-step">
+          <div class="alur-dot" style="background:var(--purple-600)">4</div>
+          <div class="alur-step-body">
+            <div><span class="alur-time" style="background:var(--purple-50);color:var(--purple-800)">± 15 Menit</span></div>
+            <h4>Fase 4 — Pengolahan Data</h4>
+            <p>Diskusi kelompok: merumuskan minimal 5 sifat eksponen dari pola tabel · Menuliskan kesimpulan matematis: aᵐ×aⁿ=aᵐ⁺ⁿ, aᵐ÷aⁿ=aᵐ⁻ⁿ, (aᵐ)ⁿ=aᵐˣⁿ, (ab)ᵐ=aᵐbᵐ · Menyelesaikan soal penyederhanaan di bagian C Aktivitas 2 · <strong>Aktivitas 3 (LKPD)</strong> — Melengkapi tabel pertumbuhan pengguna aplikasi, menemukan pola fungsi f(x) = aˣ, menghitung prediksi hari ke-10</p>
+          </div>
+        </div>
+
+        <div class="alur-step">
+          <div class="alur-dot" style="background:var(--coral-600)">5</div>
+          <div class="alur-step-body">
+            <div><span class="alur-time" style="background:var(--coral-50);color:var(--coral-800)">± 15 Menit</span></div>
+            <h4>Fase 5 — Pembuktian (Presentasi Kelompok)</h4>
+            <p>2 kelompok dipilih acak untuk presentasi sesuai panduan LKPD (Bagian C Aktivitas 3): menjelaskan konsep eksponen & komponennya, menyebutkan minimal 5 sifat, menunjukkan cara penyederhanaan, menjelaskan hubungan pola pertumbuhan dengan f(x) = aˣ · Sesi tanya jawab antar kelompok · Guru mendorong saling menghargai dan meluruskan jika ada jawaban keliru</p>
+          </div>
+        </div>
+
+        <div class="alur-step">
+          <div class="alur-dot" style="background:var(--amber-600)">6</div>
+          <div class="alur-step-body">
+            <div><span class="alur-time" style="background:var(--amber-50);color:var(--amber-800)">± 5 Menit</span></div>
+            <h4>Fase 6 — Generalisasi (Kesimpulan)</h4>
+            <p>Guru mengonfirmasi jawaban benar dari seluruh aktivitas LKPD · Meluruskan miskonsepsi yang muncul · Merangkum: definisi eksponen, 7 sifat eksponen, dan fungsi eksponensial f(x) = aˣ · Peserta didik mengisi bagian Refleksi LKPD (hal baru, sifat termudah, sifat tersulit, konteks kehidupan nyata)</p>
+          </div>
+        </div>
+
+        <div class="alur-step">
+          <div class="alur-dot" style="background:var(--teal-600)">P</div>
+          <div class="alur-step-body">
+            <div><span class="alur-time" style="background:var(--teal-50);color:var(--teal-800)">± 10 Menit</span></div>
+            <h4>Kegiatan Penutup</h4>
+            <p>Peserta didik kembali ke tempat duduk · Exit ticket 3-2-1 (3 hal dipelajari, 2 hal menarik, 1 pertanyaan) · Rencana tindak lanjut (pengayaan / remedial) · Informasi topik berikutnya (Bentuk Akar) · Apresiasi kepada peserta didik · Doa penutup & salam</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="card-icon" style="background:var(--green-50)">📦</div>Sarana &amp; Prasarana</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <span class="chip blue">Proyektor / TV Display</span>
+        <span class="chip blue">Slide PPT Kontekstual</span>
+        <span class="chip teal">LKPD Eksponen (1 dokumen terintegrasi)</span>
+        <span class="chip amber">Papan Tulis &amp; Spidol</span>
+        <span class="chip purple">Lembar Soal Tes</span>
+        <span class="chip coral">Media Kontekstual (Grafik &amp; Tabel)</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="card-icon" style="background:var(--amber-50)">📚</div>LKPD yang Digunakan</div>
+      <p style="font-size:13px;color:var(--gray-600);margin-bottom:1rem">Satu LKPD terintegrasi dengan tema <strong>Eksponen dalam Kehidupan Sehari-hari</strong>, terdiri dari 3 aktivitas:</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+        <div style="background:var(--blue-50);border-radius:12px;padding:1rem;border:1px solid var(--blue-200)">
+          <div style="font-weight:700;color:var(--blue-800);font-size:13px;margin-bottom:6px">Aktivitas 1</div>
+          <p style="font-size:13px;color:var(--blue-800)">Hoaks yang Menyebar Cepat — Eksplorasi pola penyebaran & pengenalan konsep eksponen</p>
+        </div>
+        <div style="background:var(--purple-50);border-radius:12px;padding:1rem;border:1px solid var(--purple-200)">
+          <div style="font-weight:700;color:var(--purple-800);font-size:13px;margin-bottom:6px">Aktivitas 2</div>
+          <p style="font-size:13px;color:var(--purple-800)">Menemukan &amp; Menerapkan Sifat-Sifat Eksponen — Tabel eksplorasi, merumuskan sifat, penyederhanaan</p>
+        </div>
+        <div style="background:var(--amber-50);border-radius:12px;padding:1rem;border:1px solid var(--amber-200)">
+          <div style="font-weight:700;color:var(--amber-800);font-size:13px;margin-bottom:6px">Aktivitas 3</div>
+          <p style="font-size:13px;color:var(--amber-800)">Pola Pertumbuhan Eksponen &amp; Fungsi Eksponensial — Analisis tabel, f(x) = aˣ, presentasi kelompok</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ LATIHAN ══════════════════════════════ -->
+<div id="sec-latihan" class="section">
+  <div class="container">
+    <h2 class="sec-heading">Latihan Soal</h2>
+    <p class="sec-sub">Uji pemahamanmu tentang eksponen — klik jawaban yang menurutmu benar</p>
+
+    <div class="card" id="quiz-card">
+      <div id="quiz-container"></div>
+      <div class="score-box" id="score-box" style="display:none">
+        <div class="score-big" id="score-num"></div>
+        <div class="score-label" id="score-label"></div>
+        <button class="reset-btn" onclick="resetQuiz()">🔄 Coba Lagi</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ REFLEKSI ══════════════════════════════ -->
+<div id="sec-refleksi" class="section">
+  <div class="container">
+    <h2 class="sec-heading">Refleksi Pembelajaran</h2>
+    <p class="sec-sub">Pertanyaan refleksi untuk guru dan peserta didik</p>
+
+    <div class="card">
+      <div class="card-title"><div class="card-icon" style="background:var(--blue-50)">👩‍🏫</div>Refleksi Guru (10 Pertanyaan)</div>
+      <div id="refleksi-guru-list"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="card-icon" style="background:var(--teal-50)">🎓</div>Exit Ticket — 3-2-1 (Peserta Didik)</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem">
+        <div style="background:var(--blue-50);border-radius:12px;padding:1.25rem;border:1px solid var(--blue-200)">
+          <div style="font-size:2rem;font-weight:700;color:var(--blue-600);margin-bottom:8px">3️⃣</div>
+          <div style="font-weight:700;color:var(--blue-800);margin-bottom:6px">Hal yang Dipelajari</div>
+          <p style="font-size:13px;color:var(--blue-800)">Tuliskan 3 hal baru yang kamu pelajari hari ini tentang eksponen.</p>
+        </div>
+        <div style="background:var(--teal-50);border-radius:12px;padding:1.25rem;border:1px solid var(--teal-200)">
+          <div style="font-size:2rem;font-weight:700;color:var(--teal-600);margin-bottom:8px">2️⃣</div>
+          <div style="font-weight:700;color:var(--teal-800);margin-bottom:6px">Hal yang Menarik</div>
+          <p style="font-size:13px;color:var(--teal-800)">Tuliskan 2 hal yang paling menarik atau mengejutkan dari materi eksponen.</p>
+        </div>
+        <div style="background:var(--amber-50);border-radius:12px;padding:1.25rem;border:1px solid var(--amber-200)">
+          <div style="font-size:2rem;font-weight:700;color:var(--amber-600);margin-bottom:8px">1️⃣</div>
+          <div style="font-weight:700;color:var(--amber-800);margin-bottom:6px">Pertanyaan</div>
+          <p style="font-size:13px;color:var(--amber-800)">Tuliskan 1 pertanyaan yang masih ingin kamu tanyakan atau belum dipahami.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="card-icon" style="background:var(--coral-50)">🔁</div>Tindak Lanjut</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div style="background:var(--green-50);border-radius:12px;padding:1.25rem;border:1px solid var(--green-200)">
+          <div style="font-weight:700;color:var(--green-800);margin-bottom:.5rem">⭐ Pengayaan (Nilai &gt; 75)</div>
+          <ul style="font-size:13px;color:var(--green-800);padding-left:1.2rem;line-height:2">
+            <li>Tutor sebaya</li>
+            <li>Soal HOTS eksponen negatif &amp; pecahan</li>
+            <li>Eksplorasi grafik f(x)=aˣ di Desmos/GeoGebra</li>
+            <li>Proyek mini: analisis populasi eksponen</li>
+          </ul>
+        </div>
+        <div style="background:var(--blue-50);border-radius:12px;padding:1.25rem;border:1px solid var(--blue-200)">
+          <div style="font-weight:700;color:var(--blue-800);margin-bottom:.5rem">🔁 Remedial (Nilai &lt; 75)</div>
+          <ul style="font-size:13px;color:var(--blue-800);padding-left:1.2rem;line-height:2">
+            <li>Pembelajaran ulang dengan analogi konkret</li>
+            <li>Bimbingan guru / tutor sebaya</li>
+            <li>Latihan soal level dasar</li>
+            <li>Kuis remedial (min. 1 minggu setelah PBM)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><div class="card-icon" style="background:var(--purple-50)">📖</div>Daftar Pustaka</div>
+      <p style="font-size:14px;color:#333;line-height:1.8">
+        Susanto, D., dkk. (2023). <em>Matematika untuk SMA/MA/SMK/MAK Kelas X (Edisi Revisi)</em>. Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi Republik Indonesia.
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── TAB NAVIGATION ──
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  event.currentTarget.classList.add('active');
+}
+
+// ── SIMULATOR ──
+function fmt(n){
+  if(n>=1e12) return (n/1e12).toFixed(1)+'T';
+  if(n>=1e9)  return (n/1e9).toFixed(1)+'M';
+  if(n>=1e6)  return (n/1e6).toFixed(2)+'jt';
+  return n.toLocaleString('id-ID');
+}
+function updateSim(){
+  var a=+document.getElementById('sl-base').value;
+  var n=+document.getElementById('sl-exp').value;
+  document.getElementById('out-base').textContent=a;
+  document.getElementById('out-exp').textContent=n;
+  var result=Math.pow(a,n);
+  document.getElementById('sim-formula').textContent=a+' dipangkatkan '+n+' =';
+  document.getElementById('sim-result').textContent=fmt(result);
+  var notation=Array(Math.min(n,5)).fill(a).join('×')+(n>5?' × ... ('+n+' faktor)':'');
+  document.getElementById('sim-notation').textContent=notation;
+  var tbody=document.getElementById('sim-table-body');
+  tbody.innerHTML='';
+  for(var i=1;i<=n;i++){
+    var val=Math.pow(a,i);
+    var factors=Array(Math.min(i,4)).fill(a).join('×')+(i>4?'×...':'');
+    var tr=document.createElement('tr');
+    if(i===n) tr.className='highlight';
+    tr.innerHTML='<td>'+i+'</td><td><strong>'+fmt(val)+'</strong></td><td>'+factors+'</td>';
+    tbody.appendChild(tr);
+  }
+}
+updateSim();
+document.getElementById('sl-base').addEventListener('input',updateSim);
+document.getElementById('sl-exp').addEventListener('input',updateSim);
+
+function updateSifat(){
+  var a=+document.getElementById('sl-a').value;
+  var m=+document.getElementById('sl-m').value;
+  var n=+document.getElementById('sl-n').value;
+  document.getElementById('out-a').textContent=a;
+  document.getElementById('out-m').textContent=m;
+  document.getElementById('out-n').textContent=n;
+  var am=Math.pow(a,m), an=Math.pow(a,n);
+  var sifat=[
+    {title:'① Perkalian',color:'blue',
+     lhs:a+'ᵐ × '+a+'ⁿ = '+fmt(am)+' × '+fmt(an),
+     rhs:a+'^('+m+'+'+n+') = '+a+'^'+(m+n)+' = '+fmt(Math.pow(a,m+n)),
+     match:Math.abs(am*an-Math.pow(a,m+n))<0.001},
+    {title:'② Pembagian',color:'teal',
+     lhs:a+'ᵐ ÷ '+a+'ⁿ = '+fmt(am)+' ÷ '+fmt(an),
+     rhs:a+'^('+m+'-'+n+') = '+a+'^'+(m-n)+' = '+fmt(Math.pow(a,m-n)),
+     match:Math.abs(am/an-Math.pow(a,m-n))<0.001},
+    {title:'③ Pangkat dari Pangkat',color:'purple',
+     lhs:'('+a+'ᵐ)ⁿ = '+fmt(am)+'^'+n,
+     rhs:a+'^('+m+'×'+n+') = '+a+'^'+(m*n)+' = '+fmt(Math.pow(a,m*n)),
+     match:Math.abs(Math.pow(am,n)-Math.pow(a,m*n))<0.001},
+    {title:'④ Eksponen Nol',color:'amber',
+     lhs:a+'⁰',rhs:'= 1',match:true},
+  ];
+  var html='';
+  sifat.forEach(function(s){
+    html+='<div class="sifat-card '+s.color+'" style="position:relative">'
+      +'<h4>'+s.title+'</h4>'
+      +'<div style="font-size:12px;margin:.3rem 0">'+s.lhs+'</div>'
+      +'<div style="font-size:13px;font-weight:700">'+s.rhs+'</div>'
+      +'<div style="position:absolute;top:10px;right:12px;font-size:16px">'+(s.match?'✅':'❌')+'</div>'
+      +'</div>';
+  });
+  document.getElementById('sifat-results').innerHTML=html;
+}
+updateSifat();
+['sl-a','sl-m','sl-n'].forEach(function(id){
+  document.getElementById(id).addEventListener('input',updateSifat);
+});
+
+// ── QUIZ ──
+var questions=[
+  {q:'Berapa nilai dari 3⁴?',opts:['64','81','27','72'],ans:1,exp:'3⁴ = 3×3×3×3 = 81'},
+  {q:'Sederhanakan: 2⁵ × 2³ = ?',opts:['2⁸','2¹⁵','4⁸','2²'],ans:0,exp:'Sifat perkalian: 2⁵ × 2³ = 2^(5+3) = 2⁸ = 256'},
+  {q:'Hasil dari 5⁰ adalah ...',opts:['0','5','1','Tidak terdefinisi'],ans:2,exp:'Setiap bilangan (≠0) dipangkatkan 0 = 1. Jadi 5⁰ = 1'},
+  {q:'Sederhanakan: (2³)⁴ = ?',opts:['2⁷','2¹²','2³','8⁴'],ans:1,exp:'Sifat pangkat dari pangkat: (2³)⁴ = 2^(3×4) = 2¹²'},
+  {q:'Nilai dari 4⁻² adalah ...',opts:['−16','1/16','−1/16','16'],ans:1,exp:'Eksponen negatif: 4⁻² = 1/4² = 1/16'},
+  {q:'Hasil dari 6⁸ ÷ 6⁵ = ?',opts:['6³','6¹³','1³','6⁴⁰'],ans:0,exp:'Sifat pembagian: 6⁸ ÷ 6⁵ = 6^(8-5) = 6³ = 216'},
+];
+var answered=[];
+var userSelections={};
+function buildQuiz(){
+  var html='';
+  questions.forEach(function(q,i){
+    html+='<div class="soal-item" id="q'+i+'">'
+      +'<div class="soal-q">'+( i+1 )+'. '+q.q+'</div>'
+      +'<div class="soal-options">'
+      +q.opts.map(function(o,j){
+        return '<button class="opt-btn" onclick="checkAns('+i+','+j+')">'+String.fromCharCode(65+j)+'. '+o+'</button>';
+      }).join('')
+      +'</div>'
+      +'<div class="soal-feedback" id="fb'+i+'"></div>'
+      +'</div>';
+  });
+  document.getElementById('quiz-container').innerHTML=html;
+  answered=[];
+  userSelections={};
+  document.getElementById('score-box').style.display='none';
+}
+function checkAns(qi,sel){
+  if(answered.includes(qi)) return;
+  answered.push(qi);
+  userSelections[qi]=sel;
+  var q=questions[qi];
+  var btns=document.querySelectorAll('#q'+qi+' .opt-btn');
+  btns.forEach(function(b,j){
+    b.classList.add('disabled');
+    if(j===q.ans) b.classList.add('correct');
+    else if(j===sel) b.classList.add('wrong');
+  });
+  var fb=document.getElementById('fb'+qi);
+  var isCorrect=(sel===q.ans);
+  fb.className='soal-feedback show '+(isCorrect?'ok':'err');
+  fb.textContent=(isCorrect?'✅ Benar! ':'❌ Kurang tepat. ')+q.exp;
+  if(answered.length===questions.length){
+    var correct=answered.reduce(function(acc,qi){
+      return acc+(userSelections[qi]===questions[qi].ans?1:0);
+    },0);
+    setTimeout(function(){
+      document.getElementById('score-num').textContent=correct+'/'+questions.length;
+      var pct=Math.round(correct/questions.length*100);
+      document.getElementById('score-label').textContent='Skor kamu: '+pct+'% — '+(pct>=80?'Luar biasa! Kamu menguasai eksponen 🎉':pct>=60?'Bagus! Terus berlatih 💪':'Semangat! Pelajari kembali sifat-sifatnya 📖');
+      document.getElementById('score-box').style.display='block';
+    },600);
+  }
+}
+function resetQuiz(){ buildQuiz(); }
+buildQuiz();
+
+// ── REFLEKSI GURU ──
+var rGuruQ=[
+  'Apakah tujuan pembelajaran hari ini tercapai? (Ya / Sebagian / Belum)',
+  'Bagaimana respons peserta didik terhadap apersepsi penyebaran hoaks?',
+  'Apakah LKPD sudah efektif membantu peserta didik menemukan konsep eksponen secara mandiri?',
+  'Bagian mana dari materi yang paling banyak ditanyakan peserta didik?',
+  'Apakah semua kelompok aktif bereksplorasi dan berdiskusi?',
+  'Apakah alokasi waktu sudah sesuai? (Kelebihan/kekurangan di fase mana?)',
+  'Peserta didik mana yang perlu perhatian khusus (remedial)?',
+  'Peserta didik mana yang dapat diberikan pengayaan?',
+  'Apa yang akan diperbaiki untuk pertemuan berikutnya?',
+  'Apakah scaffolding sudah cukup tanpa mengurangi kesempatan eksplorasi siswa?',
+];
+var html='';
+rGuruQ.forEach(function(q,i){
+  html+='<div class="refleksi-q"><div class="q-num">'+(i+1)+'</div><div>'+q+'</div></div>';
+});
+document.getElementById('refleksi-guru-list').innerHTML=html;
+</script>
+</body>
+</html>
